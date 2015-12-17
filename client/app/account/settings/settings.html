@@ -1,0 +1,52 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="container">
+  <div class="row">
+    <form class="well form-horizontal col-sm-6 col-sm-offset-3" name="form" ng-submit="changePassword(form)" novalidate>
+      <img class="center-block" width="200px" height="200px"
+           ng-if="getCurrentUser().avatar.contentType && !user.avatar"
+           ng-src="{{'data:' + getCurrentUser().avatar.contentType + ';base64,'+ getCurrentUser().avatar.url}}">
+      <img class="center-block" width="200px" height="200px"
+           ng-if="!getCurrentUser().avatar.contentType && !user.avatar"
+           ng-src="{{getCurrentUser().urlPhoto || 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}"/>
+      <div ngf-drop ngf-select ng-model="avatar" class="drop-box center-block"
+           style="margin-top: -200px"
+           ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="true"
+           accept="image/*"
+           ngf-pattern="'image/*'">Drop images here or click to upload
+      </div>
+      <div class="progress" ng-show="avatar.progress >= 0">
+        <div class="progress-bar progress-bar-info" style="width: {{user.avatar.progress}}%"></div>
+      </div>
+      <fieldset>
+
+        <legend>Change password</legend>
+        <div class="form-group">
+          <label>Current Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.oldPassword"
+                 mongoose-error/>
+
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            {{ errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>New Password</label>
+
+          <input type="password" name="newPassword" class="form-control" ng-model="user.newPassword"
+                 ng-minlength="3"
+                 required/>
+
+          <p class="help-block"
+             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || submitted)">
+            Password must be at least 3 characters.
+          </p>
+        </div>
+        <button class="btn btn-raised btn-success" type="submit">Save changes</button>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+

@@ -1,0 +1,38 @@
+<div class="navbar navbar-inverse navbar-static-top" ng-controller="NavbarCtrl">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">cesi</a>
+    </div>
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+          <a ng-href="{{item.link}}" target="_blank">{{item.title}}</a>
+        </li>
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+        <li ng-show="isLoggedIn()"><p class="navbar-text">
+          <img class="img-circle" width="20px" height="20px"
+               ng-if="getCurrentUser().avatar.contentType"
+               ng-src="{{'data:' + getCurrentUser().avatar.contentType + ';base64,'+ getCurrentUser().avatar.url}}">
+          <img class="img-circle" height="20px"
+               ng-if="!getCurrentUser().avatar.contentType"
+               ng-src="{{getCurrentUser().urlPhoto || 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}"/>
+          Hello {{ getCurrentUser().username }}</p></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span
+          class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

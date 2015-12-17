@@ -1,0 +1,76 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<header class="center-block">
+  <div class=" banner">
+    <h1>CESI Twitter Like</h1>
+    <p class="lead">let's communicate</p>
+  </div>
+</header>
+<div class="hero-unit">
+  <div class="container">
+    <form class="col-sm-6 col-sm-offset-3" ng-if="isLoggedIn()">
+      <h1>Post a message</h1>
+
+      <div class="row">
+        <div class="form-group label-floating is-empty col-sm-8">
+          <label for="i5" class="control-label">Add a new message here</label>
+          <input class="form-control" id="i5" type="text" ng-model="mess.message">
+          <span class="material-input"></span></div>
+
+    <span class="col-sm-4">
+        <button type="submit" class="btn btn-raised btn-info" ng-click="addMessage()">Add New</button>
+      </span>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-12" ng-repeat="message in messages | orderBy : '-date'| limitTo : 10 : begin">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <strong ng-bind="message.user.username"></strong> <span class="text-muted">{{message.date | date:"MM/dd/yyyy 'at' h:mma"}}</span>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-4" ng-if="$odd">
+                  <div class="thumbnail">
+                    <img class="user-photo" width="100px" height="100px"
+                         ng-src="{{message.user.urlPhoto || 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}">
+                  </div><!-- /thumbnail -->
+                </div>
+                <div class="col-sm-8">
+                  <blockquote>
+                    {{message.message}}
+                  </blockquote>
+                </div>
+                <div class="col-sm-4" ng-if="$even">
+
+                  <div class="thumbnail">
+                    <img class="user-photo" width="100px" height="100px"
+                         ng-if="message.user.avatar.contentType"
+                         ng-src="{{'data:' + message.user.avatar.contentType + ';base64,'+ message.user.avatar.url}}">
+                    <img class="user-photo" width="100px" height="100px"
+                         ng-if="!message.user.avatar.contentType"
+                         ng-src="{{message.user.urlPhoto
+                       || 'https://ssl.gstatic.com/accounts/ui/avatar_2x.png'}}">
+                  </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+              </div>
+            </div><!-- /panel-body -->
+          </div><!-- /panel panel-default -->
+        </div><!-- /col-sm-5 -->
+
+      </div>
+
+    </div>
+    <div class="text-center">
+      <pagination total-items="messages.length" ng-model="currentPage" ng-change="pageChanged()"
+                  max-size="10"></pagination>
+    </div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p>CESI Twitter
+      <a href="https://twitter.com/xavmarin">@xavmarin</a>
+  </div>
+</footer>

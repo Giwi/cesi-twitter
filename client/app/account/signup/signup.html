@@ -1,0 +1,78 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container pwd-container">
+
+  <div class="row">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+        <form method="post" novalidate role="login" ng-submit="register(form)" name="form">
+          <div class="col-sm-12">
+            <h1>Sign up</h1>
+            <img ng-show="form.file.$valid" ngf-thumbnail="user.avatar" class="img-circle signup_avatar" width="100px"
+                 height="100px">
+          </div>
+          <div class="form-group" ng-class="{ 'has-success': form.username.$valid && submitted,
+                                            'has-error': form.username.$invalid && submitted }">
+            <input type="text" name="username" placeholder="Login" ng-model="user.username" required
+                   class="form-control input-lg"
+                   value=""/>
+
+            <p class="help-block" ng-show="form.username.$error.required && submitted">
+              A name is required
+            </p>
+
+            <p class="help-block" ng-show="form.username.$error.mongoose">
+              {{ errors.username }}
+            </p>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+
+            <input type="password" name="password" class="form-control input-lg" ng-model="user.password"
+                   ng-minlength="3"
+                   required placeholder="Password"
+                   mongoose-error/>
+
+            <p class="help-block"
+               ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+              Password must be at least 3 characters.
+            </p>
+
+            <p class="help-block" ng-show="form.password.$error.mongoose">
+              {{ errors.password }}
+            </p>
+          </div>
+          <div class="form-group">
+            <input readonly="" class="form-control" placeholder="Browse..." type="text" value="{{user.avatar | json}}">
+            <input type="file" ngf-select ng-model="user.avatar" name="file"
+                   accept="image/*" ngf-max-size="2MB" required/>
+            <p class="help-block" ng-show="form.file.$error.required">
+              Required
+            </p>
+            <p class="help-block" ng-show="form.file.$error.maxSize">
+              File too large
+              {{picFile.size / 1000000|number:1}}MB: max 2M
+            </p>
+          </div>
+          <div class="progress" ng-show="user.avatar.progress >= 0">
+            <div class="progress-bar progress-bar-info" style="width: {{user.avatar.progress}}%"></div>
+          </div>
+
+          <button type="submit" name="go" class="btn btn-lg btn-raised btn-info btn-block" ng-disabled="!form.$valid" >Sign up</button>
+
+          <div>
+            <a href="/login">Already an account?</a> <!-- or <a href="#">reset password</a> -->
+          </div>
+
+        </form>
+      </section>
+    </div>
+
+    <div class="col-md-4"></div>
+
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container pwd-container">
+
+  <div class="row">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+      <section class="login-form">
+        <form method="post" novalidate role="login" ng-submit="login(form)" name="form">
+          <div class="col-sm-12">
+            <h1>Sign in</h1>
+          </div>
+          <input type="text" name="username" placeholder="Login" ng-model="user.username" required
+                 class="form-control input-lg"
+                 value=""/>
+
+          <input type="password" class="form-control input-lg" id="password" placeholder="Password"
+                 ng-model="user.password" required/>
+
+          <div class="form-group has-error">
+            <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+              Please enter your email and password.
+            </p>
+
+            <p class="help-block" ng-show="form.email.$error.email && submitted">
+              Please enter a valid email.
+            </p>
+
+            <p class="help-block">{{ errors.other }}</p>
+          </div>
+          <button type="submit" name="go" class="btn btn-lg btn-raised btn-info btn-block">Sign in</button>
+
+          <div>
+            <a href="/signup">Create account</a> <!-- or <a href="#">reset password</a> -->
+          </div>
+
+        </form>
+      </section>
+    </div>
+
+    <div class="col-md-4"></div>
+
+
+  </div>
+</div>

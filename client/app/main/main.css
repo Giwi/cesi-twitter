@@ -1,0 +1,113 @@
+.hero-unit {
+  position: relative;
+  padding: 30px 15px;
+  color: #F5F5F5;
+  text-align: center;
+  background: #4393B9 url("https://unsplash.it/1024/768/?random") center fixed;
+  background-size: cover;
+  -moz-background-size: cover;
+  width: 100%;
+  height: 100%;
+  margin-top: -20px;
+  box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.7);
+  -o-box-shadow: inset 0 10px 5px -5px rgba(0, 0, 0, 0.7);
+}
+.navbar {
+  box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow:  -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow:  -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+  -o-box-shadow:  -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+}
+.panel-body {
+  color: #212121;
+  text-align: left;
+}
+.banner {
+  border-bottom: none;
+  margin-top: -20px;
+  text-align: center;
+  background-color: #5c6bc0;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  color: #F5F5F5;
+  padding: 10px;
+}
+header {
+
+
+/*  -moz-box-shadow:  -1px 2px 5px 1px rgba(0, 0, 0, 0.7); */
+}
+
+.banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.navbar-text {
+  margin-left: 15px;
+}
+.arrow-left {
+  position: relative;
+  margin-left: -20px;
+}
+.arrow-left:after, .arrow-left:before {
+  left: 5px;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow-left:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: white;
+  border-width: 14px;
+  margin-top: -14px;
+}
+.arrow-left:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-left-color: #DDD;
+  border-width: 20px;
+  margin-top: -20px;
+  margin-left: -4px;
+  z-index: -5;
+}
+
+.arrow-right {
+  position: relative;
+  margin-right: -20px;
+}
+.arrow-right:after, .arrow-right:before {
+  right: 5px;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow-right:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-right-color: white;
+  border-width: 14px;
+  margin-top: -14px;
+}
+.arrow-right:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-right-color: #DDD;
+  border-width: 20px;
+  margin-top: -20px;
+  margin-right: -4px;
+}

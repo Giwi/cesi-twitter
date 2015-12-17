@@ -1,0 +1,15 @@
+{
+  "name": "Twitter-Cesi",
+  "version": "0.1.0",
+  "description": "Twitter-Cesi API",
+  "title": "Twitter-Cesi API",
+  "url": "https://cesi-giwisoft.rhcloud.com",
+  "sampleUrl": "https://cesi-giwisoft.rhcloud.com",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "header": {
+    "filename": "README.md"
+  }
+}
